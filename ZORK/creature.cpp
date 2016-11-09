@@ -21,7 +21,7 @@ void Creature::Look() const
 	}
 	else
 	{
-		cout << name << " 's corpse is here" << endl;
+		cout << Name << " 's corpse is here" << endl;
 	}
 }
 
@@ -50,4 +50,9 @@ bool Creature::UnEquip(const arglist& args)
 {
 	// TODO
 	return true;
+}
+
+Room* Creature::CurrentRoom() const
+{
+	return (Room*)parent;
 }

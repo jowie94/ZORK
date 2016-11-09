@@ -1,16 +1,21 @@
 #ifndef _ENTITY_H_
 #define _ENTITY_H_
+
 #include <vector>
+#include <list>
+#include <string>
 
 typedef std::vector<std::string> arglist;
 
-#include <list>
+using namespace std;
 
 enum ENTITY_TYPE
 {
 	ENTITY,
 	ROOM,
-	CREATURE
+	ITEM,
+	CREATURE,
+	PLAYER
 };
 
 class Entity
@@ -21,14 +26,17 @@ public:
 
 	virtual void Look() const;
 	virtual void Tick();
+	
+	Entity* Find(const string &name) const;
+	Entity* Find(const string &name, const ENTITY_TYPE type) const;
 
 	ENTITY_TYPE Type;
+	string Name;
+	string Description;
 
 protected:
-	std::string name;
-	std::string description;
 	Entity* parent;
-	std::list<Entity*> sub_entities;
+	list<Entity*> sub_entities;
 };
 
 #endif // _ENTITY_H_

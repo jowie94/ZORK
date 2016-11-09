@@ -8,7 +8,7 @@ class Creature :
 {
 public:
 	Creature(const char* name, const char* description, Room* parent);
-	~Creature();
+	virtual ~Creature();
 
 	void Look() const;
 	void Tick();
@@ -18,6 +18,7 @@ public:
 	virtual bool Equip(const arglist &args);
 	virtual bool UnEquip(const arglist &args);
 
+	Room* CurrentRoom() const;
 
 	int MaxHitpoints;
 	int MinHitpoints;
