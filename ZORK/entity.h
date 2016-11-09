@@ -3,6 +3,12 @@
 
 #include <list>
 
+enum ENTITY_TYPE
+{
+	ENTITY,
+	ROOM
+};
+
 class Entity
 {
 public:
@@ -10,6 +16,8 @@ public:
 	virtual ~Entity();
 
 	virtual void Tick();
+
+	ENTITY_TYPE Type;
 
 private:
 

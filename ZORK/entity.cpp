@@ -8,6 +8,8 @@ Entity::Entity(const char* name, const char* description, Entity* parent = nullp
 	{
 		parent->sub_entities.push_back(this);
 	}
+
+	Type = ENTITY;
 }
 
 
