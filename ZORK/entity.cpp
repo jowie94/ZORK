@@ -24,6 +24,21 @@ void Entity::Look() const
 void Entity::Tick()
 {}
 
+void Entity::ChangeParent(Entity* newEntity)
+{
+	if (parent != nullptr)
+	{
+		parent->sub_entities.remove(this);
+	}
+
+	parent = newEntity;
+
+	if (parent != nullptr)
+	{
+		parent->sub_entities.push_back(this);
+	}
+}
+
 Entity* Entity::Find(const string& name, const ENTITY_TYPE type) const
 {
 	for (Entity* entity : sub_entities)

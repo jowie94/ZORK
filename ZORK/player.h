@@ -8,5 +8,6 @@ public:
 	~Player();
 
 	void Look(const arglist &args) const;
+	bool Pick(const arglist& args);
 };
 

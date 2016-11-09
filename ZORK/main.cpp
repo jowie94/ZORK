@@ -47,7 +47,10 @@ int main()
 
 	while (true)
 	{
-		world.Tick(args);
+		if (!world.Tick(args))
+		{
+			cout << "Sorry, I didn't understand you" << endl;
+		}
 
 		// Clean input
 		args.clear();

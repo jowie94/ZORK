@@ -54,6 +54,10 @@ bool World::ParseCommand(const arglist &args)
 	{
 		player->Look(args);
 	}
+	else if (str_equals(args[0], "pick") || str_equals(args[0], "take"))
+	{
+		ret = player->Pick(args);
+	}
 
 	return ret;
 }

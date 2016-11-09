@@ -26,6 +26,8 @@ public:
 
 	virtual void Look() const;
 	virtual void Tick();
+
+	void ChangeParent(Entity* newEntity);
 	
 	Entity* Find(const string &name) const;
 	Entity* Find(const string &name, const ENTITY_TYPE type) const;
