@@ -11,10 +11,10 @@ public:
 	World();
 	~World();
 
-	bool Tick(const std::vector<std::string> &args);
+	bool Tick(const arglist &args);
 	
 private: 
-	bool ParseCommand(const std::vector<std::string>& args);
+	bool ParseCommand(const arglist &args);
 	void GameLoop();
 
 	std::list<Entity*> entities;

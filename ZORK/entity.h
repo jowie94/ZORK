@@ -1,5 +1,8 @@
 #ifndef _ENTITY_H_
 #define _ENTITY_H_
+#include <vector>
+
+typedef std::vector<std::string> arglist;
 
 #include <list>
 

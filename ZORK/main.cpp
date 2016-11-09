@@ -8,7 +8,7 @@
 
 using namespace std;
 
-void tokenize(const string &str, vector<string> &tokens)
+void tokenize(const string &str, arglist &tokens)
 {
 	string buf;
 	stringstream ss(str);
@@ -24,7 +24,7 @@ void read_sentence(string &sentence)
 	getline(cin, sentence);
 }
 
-void print_args(const vector<string> &tokens)
+void print_args(const arglist &tokens)
 {
 	for (string token : tokens)
 		cout << token << " ";
@@ -34,7 +34,7 @@ void print_args(const vector<string> &tokens)
 int main()
 {
 	string player_input;
-	vector<string> args;
+	arglist args;
 
 	World world;
 

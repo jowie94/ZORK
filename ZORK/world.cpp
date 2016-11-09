@@ -11,7 +11,7 @@ World::~World()
 {
 }
 
-bool World::Tick(const std::vector<std::string>& args)
+bool World::Tick(const arglist &args)
 {
 	bool result = true;
 
@@ -32,7 +32,7 @@ void World::GameLoop()
 	}
 }
 
-bool World::ParseCommand(const std::vector<std::string>& args)
+bool World::ParseCommand(const arglist &args)
 {
 	return true;
 }
