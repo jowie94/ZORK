@@ -1,6 +1,8 @@
 #include "entity.h"
+#include <iostream>
+#include <string>
 
-
+using namespace std;
 
 Entity::Entity(const char* name, const char* description, Entity* parent = nullptr) : name(name), description(description), parent(parent)
 {
@@ -15,6 +17,11 @@ Entity::Entity(const char* name, const char* description, Entity* parent = nullp
 
 Entity::~Entity()
 {}
+
+void Entity::Look() const
+{
+	cout << name << endl << description << endl;
+}
 
 void Entity::Tick()
 {}
