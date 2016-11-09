@@ -4,6 +4,7 @@
 #include <vector>
 #include <list>
 #include "entity.h"
+#include "player.h"
 
 class World
 {
@@ -18,6 +19,7 @@ private:
 	void GameLoop();
 
 	std::list<Entity*> entities;
+	Player* player;
 };
 
 #endif // _WORLD_H_
