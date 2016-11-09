@@ -2,6 +2,7 @@
 #include "entity.h"
 #include "room.h"
 #include <vector>
+#include "item.h"
 
 class Creature :
 	public Entity
@@ -24,12 +25,13 @@ public:
 	int MinHitpoints;
 	int MaxDefense;
 	int MinDefense;
+	int Life;
 
 	Creature* Target;
 
 private:
-	int life;
-
+	Item *weapon;
+	Item *armour;
 	// TODO: Fields for weapons / armour
 };
 

@@ -7,6 +7,11 @@ using namespace std;
 Creature::Creature(const char* name, const char* description, Room* parent) : Entity(name, description, parent)
 {
 	Type = CREATURE;
+	MaxHitpoints = MinHitpoints = MaxDefense = MinDefense = 0;
+	Life = 1;
+
+	Target = nullptr;
+	weapon = armour = nullptr;
 }
 
 
@@ -32,7 +37,7 @@ void Creature::Tick()
 
 bool Creature::IsAlive() const
 {
-	return life > 0;
+	return Life > 0;
 }
 
 void Creature::Inventory() const

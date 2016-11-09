@@ -14,11 +14,12 @@ Room::~Room()
 
 void Room::Look()
 {
-	cout << Name << endl << Description;
+	cout << Name << endl << Description << endl;
 
 	// TODO: Separate elements
 	for (Entity* entity : sub_entities)
 	{
-		cout << entity->Name << endl;
+		if (entity->Type != PLAYER)
+			cout << entity->Name << endl;
 	}
 }

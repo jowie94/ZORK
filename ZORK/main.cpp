@@ -56,7 +56,7 @@ int main()
 		cout << "> ";
 		read_sentence(player_input);
 		tokenize(player_input, args);
-		print_args(args);
+		//print_args(args);
 
 		if (args.size() > 0 && str_equals(args[0], "quit"))
 		{

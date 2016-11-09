@@ -21,7 +21,7 @@ void Player::Look(const vector<string> &args) const
 		else
 		{
 			string arg = args[1];
-			Entity* entity = Find(arg);
+			Entity* entity = parent->Find(arg);
 			if (entity != nullptr)
 			{
 				entity->Look();
