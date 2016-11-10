@@ -45,6 +45,7 @@ bool Player::Pick(const arglist& args)
 		if (item != nullptr)
 		{
 			item->ChangeParent(this);
+			cout << "You picked up " << item->Name << endl;
 		} 
 		else
 		{
@@ -71,6 +72,7 @@ bool Player::Pick(const arglist& args)
 			if (item != nullptr)
 			{
 				item->ChangeParent(this);
+				cout << "You picked up " << item->Name << " from " << container->Name << endl;
 			}
 			else
 			{
