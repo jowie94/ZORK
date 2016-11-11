@@ -8,6 +8,7 @@ public:
 	~Player();
 
 	void Look(const arglist &args) const;
+	void Inventory() const;
 
 	bool Pick(const arglist& args);
 	bool Move(const arglist& args);

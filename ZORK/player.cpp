@@ -36,6 +36,36 @@ void Player::Look(const vector<string> &args) const
 	}
 }
 
+void Player::Inventory() const
+{
+	list<Entity*> inventory;
+	FindAll(ITEM, inventory);
+
+	if (inventory.size() == 0)
+	{
+		cout << "You don't own anything :(" << endl;
+	}
+	else
+	{
+		cout << "You own:" << endl;
+		for (Entity* item : inventory)
+		{
+			cout << " - " << item->Name;
+
+			if (item == armour)
+			{
+				cout << " (as armour)";
+			}
+			else if (item == weapon)
+			{
+				cout << " (as weapon)";
+			}
+
+			cout << endl;
+		}
+	}
+}
+
 bool Player::Pick(const arglist& args)
 {
 	bool ret = true;

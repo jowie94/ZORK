@@ -32,6 +32,7 @@ public:
 	
 	Entity* Find(const string &name) const;
 	Entity* Find(const string &name, const ENTITY_TYPE type) const;
+	void FindAll(const ENTITY_TYPE type, list<Entity*>& entities) const;
 
 	ENTITY_TYPE Type;
 	string Name;

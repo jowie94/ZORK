@@ -42,7 +42,32 @@ bool Creature::IsAlive() const
 
 void Creature::Inventory() const
 {
-	// TODO: Search the inventory
+	list<Entity*> inventory;
+	FindAll(ITEM, inventory);
+
+	if (inventory.size() == 0)
+	{
+		cout << Name << " doesn't own anything :(" << endl;
+	}
+	else
+	{
+		cout << Name << " owns:" << endl;
+		for (Entity* item : inventory)
+		{
+			cout << " - " << item->Name;
+			
+			if (item == armour)
+			{
+				cout << " (as armour)";
+			}
+			else if (item == weapon)
+			{
+				cout << " (as weapon)";
+			}
+
+			cout << endl;
+		}
+	}
 }
 
 bool Creature::Equip(const arglist &args)

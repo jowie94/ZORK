@@ -15,7 +15,7 @@ public:
 	void Tick();
 
 	bool IsAlive() const;
-	void Inventory() const;
+	virtual void Inventory() const;
 	virtual bool Equip(const arglist &args);
 	virtual bool UnEquip(const arglist &args);
 
@@ -29,9 +29,8 @@ public:
 
 	Creature* Target;
 
-private:
+protected:
 	Item *weapon;
 	Item *armour;
-	// TODO: Fields for weapons / armour
 };
 

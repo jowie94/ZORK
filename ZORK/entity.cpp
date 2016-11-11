@@ -52,6 +52,17 @@ Entity* Entity::Find(const string& name, const ENTITY_TYPE type) const
 	return nullptr;
 }
 
+void Entity::FindAll(const ENTITY_TYPE type, list<Entity*>& entities) const
+{
+	for (Entity* entity : SubEntities)
+	{
+		if (entity->Type == type)
+		{
+			entities.push_back(entity);
+		}
+	}
+}
+
 Entity* Entity::Find(const string &name) const
 {
 	for (Entity* entity : SubEntities)

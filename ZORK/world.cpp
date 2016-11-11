@@ -79,6 +79,10 @@ bool World::ParseCommand(arglist &args)
 	{
 		player->Close(args);
 	}
+	else if (str_equals(args[0], "inventory"))
+	{
+		player->Inventory();
+	}
 	else
 	{
 		ret = false;
