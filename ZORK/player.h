@@ -8,6 +8,12 @@ public:
 	~Player();
 
 	void Look(const arglist &args) const;
+
 	bool Pick(const arglist& args);
+	bool Move(const arglist& args);
+	void Open(const arglist& args);
+	void Close(const arglist& args);
+	void UnLock(const arglist& args);
+	void Lock(const arglist& args);
 };
 

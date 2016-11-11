@@ -12,10 +12,10 @@ public:
 	World();
 	~World();
 
-	bool Tick(const arglist &args);
+	bool Tick(arglist &args);
 	
 private: 
-	bool ParseCommand(const arglist &args);
+	bool ParseCommand(arglist &args);
 	void GameLoop();
 
 	std::list<Entity*> entities;

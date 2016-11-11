@@ -17,6 +17,8 @@ public:
 
 	int MaxValue;
 	int MinValue;
+	bool Closed;
+	bool Openable;
 
 	ITEM_TYPE ItemType;
 };

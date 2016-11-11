@@ -15,7 +15,8 @@ enum ENTITY_TYPE
 	ROOM,
 	ITEM,
 	CREATURE,
-	PLAYER
+	PLAYER,
+	EXIT
 };
 
 class Entity
@@ -35,10 +36,10 @@ public:
 	ENTITY_TYPE Type;
 	string Name;
 	string Description;
+	list<Entity*> SubEntities;
 
 protected:
 	Entity* parent;
-	list<Entity*> sub_entities;
 };
 
 #endif // _ENTITY_H_

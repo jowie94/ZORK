@@ -2,6 +2,8 @@
 #define _ROOM_H_
 
 #include "entity.h"
+#include "exit.h"
+
 class Room : public Entity
 {
 public:
@@ -9,6 +11,8 @@ public:
 	~Room();
 
 	void Look();
+
+	Exit* GetExitAt(const string& direction);
 };
 
 #endif // _ROOM_H_

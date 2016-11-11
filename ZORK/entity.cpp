@@ -6,7 +6,7 @@ Entity::Entity(const char* name, const char* description, Entity* parent = nullp
 {
 	if (parent != nullptr)
 	{
-		parent->sub_entities.push_back(this);
+		parent->SubEntities.push_back(this);
 	}
 
 	Type = ENTITY;
@@ -28,20 +28,20 @@ void Entity::ChangeParent(Entity* newEntity)
 {
 	if (parent != nullptr)
 	{
-		parent->sub_entities.remove(this);
+		parent->SubEntities.remove(this);
 	}
 
 	parent = newEntity;
 
 	if (parent != nullptr)
 	{
-		parent->sub_entities.push_back(this);
+		parent->SubEntities.push_back(this);
 	}
 }
 
 Entity* Entity::Find(const string& name, const ENTITY_TYPE type) const
 {
-	for (Entity* entity : sub_entities)
+	for (Entity* entity : SubEntities)
 	{
 		if (str_equals(entity->Name, name) && entity->Type == type)
 		{
@@ -54,7 +54,7 @@ Entity* Entity::Find(const string& name, const ENTITY_TYPE type) const
 
 Entity* Entity::Find(const string &name) const
 {
-	for (Entity* entity : sub_entities)
+	for (Entity* entity : SubEntities)
 	{
 		if (str_equals(entity->Name, name))
 		{
