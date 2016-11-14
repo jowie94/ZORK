@@ -15,6 +15,8 @@ public:
 	Item(const char* name, const char* description, Entity* parent);
 	~Item();
 
+	void Look() const;
+
 	int MaxValue;
 	int MinValue;
 	bool Closed;

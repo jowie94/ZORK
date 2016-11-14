@@ -1,5 +1,5 @@
 #include "item.h"
-
+#include <iostream>
 
 
 Item::Item(const char* name, const char* description, Entity* parent) : Entity(name, description, parent)
@@ -14,4 +14,20 @@ Item::Item(const char* name, const char* description, Entity* parent) : Entity(n
 
 Item::~Item()
 {
+}
+
+void Item::Look() const
+{
+	if (SubEntities.size() > 0)
+	{
+		cout << Name << " contains: " << endl;
+		for (Entity* entity : SubEntities)
+		{
+			cout << " - " << entity->Name << endl;
+		}
+	}
+	else
+	{
+		Entity::Look();
+	}
 }
