@@ -7,13 +7,19 @@
 
 World::World()
 {
+
 	Room* first_room = new Room("Central room", "The central room");
 	Room* second_room = new Room("A second room", "The east room");
 
 	entities.push_back(first_room);
 	entities.push_back(second_room);
 
-	Exit* door = new Exit("east", "west", "A tiny door", first_room, second_room);
+	Item* key = new Item("Key", "Opens the east room", first_room);
+	key->ItemType = KEY;
+
+	entities.push_back(key);
+
+	Exit* door = new Exit("east", "west", "A tiny door", first_room, second_room, key);
 
 	entities.push_back(door);
 
@@ -86,6 +92,14 @@ bool World::ParseCommand(arglist &args)
 	else if (str_equals(args[0], "close"))
 	{
 		player->Close(args);
+	}
+	else if (str_equals(args[0], "unlock"))
+	{
+		ret = player->UnLock(args);
+	}
+	else if (str_equals(args[0], "lock"))
+	{
+		ret = player->Lock(args);
 	}
 	else if (str_equals(args[0], "inventory"))
 	{

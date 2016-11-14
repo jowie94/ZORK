@@ -15,8 +15,8 @@ public:
 	bool Move(const arglist& args);
 	void Open(const arglist& args);
 	void Close(const arglist& args);
-	void UnLock(const arglist& args);
-	void Lock(const arglist& args);
+	bool UnLock(const arglist& args);
+	bool Lock(const arglist& args);
 	bool Equip(const arglist& args);
 	bool UnEquip(const arglist& args);
 };

@@ -196,7 +196,7 @@ bool Player::Move(const arglist& args)
 		}
 		else if (exit->Closed)
 		{
-			cout << "This exit is closed!." << endl;
+			cout << "This exit is closed!" << endl;
 		}
 		else
 		{
@@ -231,7 +231,7 @@ void Player::Open(const arglist& args)
 		else
 		{
 			exit->Closed = false;
-			cout << "You opened the " << args[1] << " exit!" << endl;
+			cout << "You opened the " << exit->GetExitDirectionFrom(CurrentRoom()) << " exit!" << endl;
 		}
 	}
 	else
@@ -276,7 +276,7 @@ void Player::Close(const arglist& args)
 		else
 		{
 			exit->Closed = true;
-			cout << "You closed the " << args[1] << " exit!" << endl;
+			cout << "You closed the " << exit->GetExitDirectionFrom(CurrentRoom()) << " exit!" << endl;
 		}
 	}
 	else
@@ -304,12 +304,88 @@ void Player::Close(const arglist& args)
 	}
 }
 
-void Player::UnLock(const arglist& args)
+bool Player::UnLock(const arglist& args)
 {
+	bool res = true;
+
+	if (args.size() == 5)
+	{
+		Exit* exit = CurrentRoom()->GetExitAt(args[1]);
+
+		if (exit == nullptr)
+		{
+			cout << "There's no exit in that direction (" << args[1] << ")." << endl;
+		}
+		else if (!exit->Locked)
+		{
+			cout << "The exit is not locked!" << endl;
+		}
+		else
+		{
+			Item* key = (Item*)Find(args[4], ITEM);
+
+			if (key == nullptr)
+			{
+				cout << "You don't own " << args[4] << "!" << endl;
+			}
+			else if (exit->UnLock(key))
+			{
+				cout << "You unlocked the " << exit->GetExitDirectionFrom(CurrentRoom()) << " door!" << endl;
+			}
+			else
+			{
+				cout << "You can't unlock " << exit->GetExitDirectionFrom(CurrentRoom()) << " door with " << key->Name << "." << endl;
+			}
+		}
+	}
+	else
+	{
+		res = false;
+	}
+
+	return res;
 }
 
-void Player::Lock(const arglist& args)
+bool Player::Lock(const arglist& args)
 {
+	bool res = true;
+
+	if (args.size() == 5)
+	{
+		Exit* exit = CurrentRoom()->GetExitAt(args[1]);
+
+		if (exit == nullptr)
+		{
+			cout << "There's no exit in that direction (" << args[1] << ")." << endl;
+		}
+		else if (exit->Locked)
+		{
+			cout << "The exit is locked!" << endl;
+		}
+		else
+		{
+			Item* key = (Item*)Find(args[4], ITEM);
+
+			if (key == nullptr)
+			{
+				cout << "You don't own " << args[4] << "!" << endl;
+			}
+			else if (exit->Lock(key))
+			{
+				cout << "You locked the " << exit->GetExitDirectionFrom(CurrentRoom()) << " door!" << endl;
+			}
+			else
+			{
+				cout << "You can't lock " << exit->GetExitDirectionFrom(CurrentRoom()) << " door with " << key->Name << "." << endl;
+			}
+		}
+	}
+	else
+	{
+		res = false;
+	}
+
+	return res;
 }
 
 bool Player::Equip(const arglist& args)
@@ -372,7 +448,6 @@ bool Player::UnEquip(const arglist& args)
 		{
 			cout << "You unequipped " << object->Name << endl;
 		}
-	
 	}
 	else
 	{

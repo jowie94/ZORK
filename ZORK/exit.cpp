@@ -1,9 +1,10 @@
 #include "exit.h"
 #include <iostream>
 #include "room.h"
+#include "item.h"
 
-Exit::Exit(const char* direction, const char* opposite_direction, const char* description, Room* origin, Room* destination) 
-: Entity(direction, description, origin), Locked(false), Closed(false), opposite_direction(opposite_direction), destination(destination)
+Exit::Exit(const char* direction, const char* opposite_direction, const char* description, Room* origin, Room* destination, Item* key) 
+: Entity(direction, description, origin), Locked(key!=nullptr), Closed(Locked), opposite_direction(opposite_direction), destination(destination), key(key)
 {
 	Type = EXIT;
 
@@ -49,4 +50,25 @@ Room* Exit::GetExitDestinationFrom(const Room* room) const
 	}
 
 	return destination;
+}
+
+bool Exit::UnLock(Item* key)
+{
+	if (Locked && key->ItemType == KEY)
+	{
+		Locked = key != this->key;
+	}
+
+	return !Locked;
+}
+
+bool Exit::Lock(Item* key)
+{
+	if (!Locked && key->ItemType == KEY)
+	{
+		Locked = Closed = true;
+		this->key = key;
+	}
+
+	return Locked;
 }

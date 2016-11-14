@@ -5,7 +5,8 @@ enum ITEM_TYPE
 {
 	WEAPON,
 	ARMOUR,
-	HEALTH
+	HEALTH,
+	KEY
 };
 
 class Item :
