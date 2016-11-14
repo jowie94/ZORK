@@ -11,6 +11,7 @@ public:
 	void Inventory() const;
 
 	bool Pick(const arglist& args);
+	bool Drop(const arglist& args);
 	bool Move(const arglist& args);
 	void Open(const arglist& args);
 	void Close(const arglist& args);

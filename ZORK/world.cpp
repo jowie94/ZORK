@@ -17,8 +17,11 @@ World::World()
 
 	entities.push_back(door);
 
-	Item* sword = new Item("Sword", "The mystic sword", first_room);
+	Item* box = new Item("Box", "A simple box", first_room);
+	box->Openable = box->Closed = true;
+	Item* sword = new Item("Sword", "The mystic sword", box);
 
+	entities.push_back(box);
 	entities.push_back(sword);
 
 	player = new Player("Joel", "The boss", first_room);
@@ -64,6 +67,10 @@ bool World::ParseCommand(arglist &args)
 	else if (str_equals(args[0], "pick") || str_equals(args[0], "take"))
 	{
 		ret = player->Pick(args);
+	}
+	else if (str_equals(args[0], "drop"))
+	{
+		ret = player->Drop(args);
 	}
 	else if (str_equals(args[0], "north") || str_equals(args[0], "n") || str_equals(args[0], "south") || str_equals(args[0], "s") 
 		|| str_equals(args[0], "east") || str_equals(args[0], "e") || str_equals(args[0], "west") || str_equals(args[0], "w"))

@@ -94,7 +94,7 @@ bool Player::Pick(const arglist& args)
 
 		if (container == nullptr)
 		{
-			cout << "I couldn't find the container " << args[3] << endl;
+			cout << "Couldn't find the container " << args[3] << endl;
 		}
 		else
 		{
@@ -108,6 +108,63 @@ bool Player::Pick(const arglist& args)
 			else
 			{
 				cout << "Couldn't find item " << args[1] << " in container " << args[3] << endl;
+			}
+		}
+	}
+	else
+	{
+		ret = false;
+	}
+
+	return ret;
+}
+
+bool Player::Drop(const arglist& args)
+{
+	bool ret = true;
+	if (args.size() == 2)
+	{
+		Entity* item = Find(args[1], ITEM);
+
+		if (item != nullptr)
+		{
+			item->ChangeParent(parent);
+			cout << "You dropped " << item->Name << endl;
+		}
+		else
+		{
+			cout << "Couldn't find item " << args[1] << "in your inventory." << endl;
+		}
+	}
+	else if (args.size() == 4)
+	{
+		Item* container = (Item*)parent->Find(args[3], ITEM);
+
+		if (container == nullptr) // If it is not in the room, try to find it in the inventory
+		{
+			container = (Item*)Find(args[3], ITEM);
+		}
+
+		if (container == nullptr)
+		{
+			cout << "Couldn't find the container " << args[3] << endl;
+		}
+		else if (container->Closed)
+		{
+			cout << "The " << args[3] << " is closed!" << endl;
+		}
+		else
+		{
+			Entity* item = Find(args[1], ITEM);
+
+			if (item != nullptr)
+			{
+				item->ChangeParent(container);
+				cout << "You dropped " << item->Name << " into " << container->Name << endl;
+			}
+			else
+			{
+				cout << "Couldn't find item " << args[1] << " in your inventory." << endl;
 			}
 		}
 	}
