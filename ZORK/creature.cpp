@@ -70,16 +70,40 @@ void Creature::Inventory() const
 	}
 }
 
-bool Creature::Equip(const arglist &args)
+bool Creature::Equip(Item* item)
 {
-	// TODO
-	return true;
+	bool res = false;
+
+	if (item->ItemType == ARMOUR)
+	{
+		armour = item;
+		res = true;
+	}
+	else if (item->ItemType == WEAPON)
+	{
+		weapon = item;
+		res = true;
+	}
+
+	return res;
 }
 
-bool Creature::UnEquip(const arglist& args)
+bool Creature::UnEquip(Item* item)
 {
-	// TODO
-	return true;
+	bool res = false;
+
+	if (item->ItemType == ARMOUR && item == armour)
+	{
+		armour = nullptr;
+		res = true;
+	}
+	else if (item->ItemType == WEAPON && item == weapon)
+	{
+		weapon = nullptr;
+		res = true;
+	}
+
+	return res;
 }
 
 Room* Creature::CurrentRoom() const

@@ -17,5 +17,7 @@ public:
 	void Close(const arglist& args);
 	void UnLock(const arglist& args);
 	void Lock(const arglist& args);
+	bool Equip(const arglist& args);
+	bool UnEquip(const arglist& args);
 };
 

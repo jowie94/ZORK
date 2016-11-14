@@ -16,8 +16,8 @@ public:
 
 	bool IsAlive() const;
 	virtual void Inventory() const;
-	virtual bool Equip(const arglist &args);
-	virtual bool UnEquip(const arglist &args);
+	bool Equip(Item* item);
+	bool UnEquip(Item* item);
 
 	Room* CurrentRoom() const;
 

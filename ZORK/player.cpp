@@ -12,7 +12,7 @@ Player::~Player()
 {
 }
 
-void Player::Look(const vector<string> &args) const
+void Player::Look(const vector<string>& args) const
 {
 	if (args.size() > 1)
 	{
@@ -77,7 +77,7 @@ bool Player::Pick(const arglist& args)
 		{
 			item->ChangeParent(this);
 			cout << "You picked up " << item->Name << endl;
-		} 
+		}
 		else
 		{
 			cout << "Couldn't find item " << args[1] << endl;
@@ -310,4 +310,74 @@ void Player::UnLock(const arglist& args)
 
 void Player::Lock(const arglist& args)
 {
+}
+
+bool Player::Equip(const arglist& args)
+{
+	bool ret = true;
+
+	if (args.size() == 2)
+	{
+		Item* equip = (Item*)Find(args[1], ITEM);
+		if (equip != nullptr)
+		{
+			if (Creature::Equip(equip))
+			{
+				cout << "You equipped " << equip->Name << endl;
+			}
+			else
+			{
+				cout << "You can't equip " << equip->Name << endl;
+			}
+		}
+		else
+		{
+			cout << "You don't own " << args[1] << endl;
+		}
+	}
+	else
+	{
+		ret = false;
+	}
+
+	return ret;
+}
+
+bool Player::UnEquip(const arglist& args)
+{
+	bool ret = true;
+
+	if (args.size() == 2)
+	{
+		Item* object = nullptr;
+
+		if (args[1] == "weapon")
+		{
+			object = weapon;
+		}
+		else if (args[1] == "armour")
+		{
+			object = armour;
+		}
+		else
+		{
+			object = (Item*)Find(args[1], ITEM);
+		}
+
+		if (object == nullptr || !Creature::UnEquip(object))
+		{
+			cout << "You can't unequip " << args[1] << endl;
+		}
+		else
+		{
+			cout << "You unequipped " << object->Name << endl;
+		}
+	
+	}
+	else
+	{
+		ret = false;
+	}
+
+	return ret;
 }

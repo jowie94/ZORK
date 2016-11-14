@@ -20,6 +20,7 @@ World::World()
 	Item* box = new Item("Box", "A simple box", first_room);
 	box->Openable = box->Closed = true;
 	Item* sword = new Item("Sword", "The mystic sword", box);
+	sword->ItemType = WEAPON;
 
 	entities.push_back(box);
 	entities.push_back(sword);
@@ -89,6 +90,14 @@ bool World::ParseCommand(arglist &args)
 	else if (str_equals(args[0], "inventory"))
 	{
 		player->Inventory();
+	}
+	else if (str_equals(args[0], "equip"))
+	{
+		ret = player->Equip(args);
+	}
+	else if (str_equals(args[0], "unequip"))
+	{
+		ret = player->UnEquip(args);
 	}
 	else
 	{
