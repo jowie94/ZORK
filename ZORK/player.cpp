@@ -85,16 +85,20 @@ bool Player::Pick(const arglist& args)
 	}
 	else if (args.size() == 4)
 	{
-		Entity* container = parent->Find(args[3], ITEM);
+		Item* container = (Item*)parent->Find(args[3], ITEM);
 
 		if (container == nullptr) // If it is not in the room, try to find it in the inventory
 		{
-			container = Find(args[3], ITEM);
+			container = (Item*)Find(args[3], ITEM);
 		}
 
 		if (container == nullptr)
 		{
 			cout << "Couldn't find the container " << args[3] << endl;
+		}
+		else if (container->Closed)
+		{
+			cout << "The " << args[3] << " is closed!" << endl;
 		}
 		else
 		{
