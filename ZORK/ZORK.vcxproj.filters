@@ -45,6 +45,9 @@
     <ClCompile Include="SimpleAI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="finalroom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="entity.h">
@@ -75,6 +78,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SimpleAI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="finalroom.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -13,11 +13,14 @@ public:
 	~World();
 
 	bool Tick(arglist &args);
+
+	bool AllPuzzlesSolved() const;
 	
 private: 
 	bool ParseCommand(arglist &args);
 	void GameLoop();
 
+	vector<bool>* puzzles_solved;
 	std::list<Entity*> entities;
 	Player* player;
 };

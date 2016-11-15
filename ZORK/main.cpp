@@ -52,6 +52,12 @@ int main()
 			cout << "Sorry, I didn't understand you" << endl;
 		}
 
+		if (world.AllPuzzlesSolved())
+		{
+			cout << "You escaped!! Now you are alone, in the space, waiting for your saviours..." << endl;
+			break;
+		}
+
 		// Clean input
 		args.clear();
 		player_input = "";

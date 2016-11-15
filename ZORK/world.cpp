@@ -4,13 +4,15 @@
 #include "utils.h"
 #include "exit.h"
 #include "SimpleAI.h"
+#include "finalroom.h"
 
 
 World::World()
 {
+	puzzles_solved = new vector<bool>(1, false);
 
 	Room* first_room = new Room("Central room", "The central room");
-	Room* second_room = new Room("A second room", "The east room");
+	FinalRoom* second_room = new FinalRoom("A second room", "The east room", puzzles_solved);
 
 	entities.push_back(first_room);
 	entities.push_back(second_room);
@@ -61,6 +63,11 @@ bool World::Tick(arglist &args)
 
 	GameLoop();
 	return result;
+}
+
+bool World::AllPuzzlesSolved() const
+{
+	return all(*puzzles_solved);
 }
 
 void World::GameLoop()
