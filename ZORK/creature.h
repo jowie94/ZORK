@@ -23,6 +23,7 @@ public:
 	void AttackTarget();
 	void ReceiveAttack(int amount);
 	void Die();
+	void Stats() const;
 
 	Room* CurrentRoom() const;
 	bool IsPlayerInRoom() const;

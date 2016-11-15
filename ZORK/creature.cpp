@@ -147,6 +147,16 @@ void Creature::Die()
 	AI->OnDie();
 }
 
+void Creature::Stats() const
+{
+	cout << Name << " stats:" << endl;
+	cout << " - Life: " << Life << endl;
+	cout << " - Weapon: " << (weapon ? weapon->Name : "no weapon") << endl;
+	cout << " - Damage: " << (weapon ? weapon->MinValue : MinHitpoints) << " ~ " << (weapon ? weapon->MaxValue : MaxHitpoints) << endl;
+	cout << " - Armour: " << (armour ? armour->Name : "no armour") << endl;
+	cout << " - Defense: " << (armour ? armour->MinValue : MinDefense) << " ~ " << (armour ? armour->MaxValue : MaxDefense) << endl;
+}
+
 Room* Creature::CurrentRoom() const
 {
 	return (Room*)parent;

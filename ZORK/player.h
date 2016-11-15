@@ -20,5 +20,8 @@ public:
 	bool Equip(const arglist& args);
 	bool UnEquip(const arglist& args);
 	bool Attack(const arglist& args);
+	void Stats(const arglist& args);
+	bool Examine(const arglist& args);
+	bool Loot(const arglist& args);
 };
 

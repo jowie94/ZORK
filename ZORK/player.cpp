@@ -133,6 +133,14 @@ bool Player::Drop(const arglist& args)
 		if (item != nullptr)
 		{
 			item->ChangeParent(parent);
+			if (item == weapon)
+			{
+				weapon = nullptr;
+			}
+			if (item == armour)
+			{
+				armour = nullptr;
+			}
 			cout << "You dropped " << item->Name << endl;
 		}
 		else
@@ -484,6 +492,85 @@ bool Player::Attack(const arglist& args)
 		{
 			Target = (Creature*)target;
 			AttackTarget();
+		}
+	}
+	else
+	{
+		ret = false;
+	}
+
+	return ret;
+}
+
+void Player::Stats(const arglist& args)
+{
+	Creature::Stats();
+}
+
+bool Player::Examine(const arglist& args)
+{
+	bool ret = true;
+
+	if (args.size() == 2)
+	{
+		Creature* creature = (Creature*)parent->Find(args[1], CREATURE);
+
+		if (creature == nullptr)
+		{
+			cout << args[1] << " isn't here!" << endl;
+		}
+		else
+		{
+			creature->Stats();
+
+			if (!creature->IsAlive())
+			{
+				creature->Inventory();
+			}
+		}
+	}
+	else
+	{
+		ret = false;
+	}
+
+	return ret;
+}
+
+bool Player::Loot(const arglist& args)
+{
+	bool ret = true;
+
+	if (args.size() == 2)
+	{
+		Creature* creature = (Creature*)parent->Find(args[1], CREATURE);
+
+		if (creature == nullptr)
+		{
+			cout << args[1] << " isn't here!" << endl;
+		}
+		else if (creature->Life > 0)
+		{
+			cout << "You can't loot when it's still alive!" << endl;
+		}
+		{
+			list<Entity*> items;
+			creature->FindAll(ITEM, items);
+
+			if (items.size() > 0)
+			{
+				cout << "You loot " << creature->Name << " corpse and found:" << endl;
+
+				for (Entity* entity : items)
+				{
+					cout << " - " << entity->Name << endl;
+					entity->ChangeParent(this);
+				}
+			}
+			else
+			{
+				cout << "You loot " << creature->Name << " corpse but there wasn't anything..." << endl;
+			}
 		}
 	}
 	else

@@ -126,6 +126,18 @@ bool World::ParseCommand(arglist &args)
 	{
 		ret = player->Attack(args);
 	}
+	else if (str_equals(args[0], "stats"))
+	{
+		player->Stats(args);
+	}
+	else if (str_equals(args[0], "examine"))
+	{
+		ret = player->Examine(args);
+	}
+	else if (str_equals(args[0], "loot"))
+	{
+		ret = player->Loot(args);
+	}
 	else
 	{
 		ret = false;
