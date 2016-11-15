@@ -4,6 +4,8 @@
 #include <vector>
 #include "item.h"
 
+class AI;
+
 class Creature :
 	public Entity
 {
@@ -18,8 +20,12 @@ public:
 	virtual void Inventory() const;
 	bool Equip(Item* item);
 	bool UnEquip(Item* item);
+	void AttackTarget();
+	void ReceiveAttack(int amount);
+	void Die();
 
 	Room* CurrentRoom() const;
+	bool IsPlayerInRoom() const;
 
 	int MaxHitpoints;
 	int MinHitpoints;
@@ -28,8 +34,12 @@ public:
 	int Life;
 
 	Creature* Target;
+	AI* AI;
 
 protected:
+	int GetDefense() const;
+	int GetAttackDamage() const;
+
 	Item *weapon;
 	Item *armour;
 };

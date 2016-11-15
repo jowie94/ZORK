@@ -19,5 +19,6 @@ public:
 	bool Lock(const arglist& args);
 	bool Equip(const arglist& args);
 	bool UnEquip(const arglist& args);
+	bool Attack(const arglist& args);
 };
 

@@ -39,11 +39,37 @@ void Entity::ChangeParent(Entity* newEntity)
 	}
 }
 
+Entity* Entity::Find(const string &name) const
+{
+	for (Entity* entity : SubEntities)
+	{
+		if (str_equals(entity->Name, name))
+		{
+			return entity;
+		}
+	}
+
+	return nullptr;
+}
+
 Entity* Entity::Find(const string& name, const ENTITY_TYPE type) const
 {
 	for (Entity* entity : SubEntities)
 	{
 		if (str_equals(entity->Name, name) && entity->Type == type)
+		{
+			return entity;
+		}
+	}
+
+	return nullptr;
+}
+
+Entity* Entity::Find(const ENTITY_TYPE type) const
+{
+	for (Entity* entity : SubEntities)
+	{
+		if (entity->Type == type)
 		{
 			return entity;
 		}
@@ -61,17 +87,4 @@ void Entity::FindAll(const ENTITY_TYPE type, list<Entity*>& entities) const
 			entities.push_back(entity);
 		}
 	}
-}
-
-Entity* Entity::Find(const string &name) const
-{
-	for (Entity* entity : SubEntities)
-	{
-		if (str_equals(entity->Name, name))
-		{
-			return entity;
-		}
-	}
-
-	return nullptr;
 }

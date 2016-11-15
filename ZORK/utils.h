@@ -9,4 +9,6 @@ bool str_equals(const char *first, const char *second);
 
 void complete_direction(std::string& direction);
 
+int randomize(int min, int max);
+
 #endif // _UTILS_H_

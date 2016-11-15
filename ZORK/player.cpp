@@ -456,3 +456,40 @@ bool Player::UnEquip(const arglist& args)
 
 	return ret;
 }
+
+bool Player::Attack(const arglist& args)
+{
+	bool ret = true;
+
+	if (args.size() == 1)
+	{
+		if (Target)
+		{
+			AttackTarget();
+		}
+		else
+		{
+			cout << "You aren't focusing any enemy!" << endl;
+		}
+	}
+	else if (args.size() == 2)
+	{
+		Entity* target = parent->Find(args[1], CREATURE);
+
+		if (target == nullptr)
+		{
+			cout << args[1] << " is not in this room!" << endl;
+		}
+		else
+		{
+			Target = (Creature*)target;
+			AttackTarget();
+		}
+	}
+	else
+	{
+		ret = false;
+	}
+
+	return ret;
+}

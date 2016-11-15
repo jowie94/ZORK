@@ -17,6 +17,7 @@ public:
 	~Item();
 
 	void Look() const;
+	int GetValue() const;
 
 	int MaxValue;
 	int MinValue;

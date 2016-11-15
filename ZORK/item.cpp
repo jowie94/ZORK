@@ -1,5 +1,6 @@
 #include "item.h"
 #include <iostream>
+#include "utils.h"
 
 
 Item::Item(const char* name, const char* description, Entity* parent) : Entity(name, description, parent)
@@ -30,4 +31,9 @@ void Item::Look() const
 	{
 		Entity::Look();
 	}
+}
+
+int Item::GetValue() const
+{
+	return randomize(MinValue, MaxValue);
 }

@@ -3,6 +3,7 @@
 #include "player.h"
 #include "utils.h"
 #include "exit.h"
+#include "SimpleAI.h"
 
 
 World::World()
@@ -27,6 +28,8 @@ World::World()
 	box->Openable = box->Closed = true;
 	Item* sword = new Item("Sword", "The mystic sword", box);
 	sword->ItemType = WEAPON;
+	sword->MaxValue = 2;
+	sword->MinValue = 1;
 
 	entities.push_back(box);
 	entities.push_back(sword);
@@ -35,6 +38,12 @@ World::World()
 	player->Life = 10;
 
 	entities.push_back(player);
+
+	Creature* enemy1 = new Creature("enemy", "A Simple enemy", first_room);
+	enemy1->AI = new SimpleAI(enemy1);
+	enemy1->Target = player;
+
+	entities.push_back(enemy1);
 }
 
 
@@ -112,6 +121,10 @@ bool World::ParseCommand(arglist &args)
 	else if (str_equals(args[0], "unequip"))
 	{
 		ret = player->UnEquip(args);
+	}
+	else if (str_equals(args[0], "attack"))
+	{
+		ret = player->Attack(args);
 	}
 	else
 	{

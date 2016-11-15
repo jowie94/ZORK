@@ -39,3 +39,8 @@ void complete_direction(std::string& direction)
 		direction = "west";
 	}
 }
+
+int randomize(int min, int max)
+{
+	return max > 0 ? min + rand() % (max - min) : 0;
+}

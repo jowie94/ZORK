@@ -1,6 +1,8 @@
 #include "creature.h"
 #include <iostream>
 #include <string>
+#include "ai.h"
+#include "utils.h"
 
 using namespace std;
 
@@ -11,6 +13,7 @@ Creature::Creature(const char* name, const char* description, Room* parent) : En
 	Life = 1;
 
 	Target = nullptr;
+	AI = nullptr;
 	weapon = armour = nullptr;
 }
 
@@ -26,13 +29,16 @@ void Creature::Look() const
 	}
 	else
 	{
-		cout << Name << " 's corpse is here" << endl;
+		cout << Name << "'s corpse is here" << endl;
 	}
 }
 
 void Creature::Tick()
 {
-	// TODO: Logic
+	if (AI && IsAlive())
+	{
+		AI->Tick();
+	}
 }
 
 bool Creature::IsAlive() const
@@ -106,7 +112,57 @@ bool Creature::UnEquip(Item* item)
 	return res;
 }
 
+void Creature::AttackTarget()
+{
+	int damage = GetAttackDamage();
+
+	if (IsPlayerInRoom())
+	{
+		cout << Target->Name << " receives " << damage << " hit points from " << Name << endl;
+	}
+
+	Target->ReceiveAttack(damage);
+}
+
+void Creature::ReceiveAttack(int amount)
+{
+	int defense = GetDefense();
+	int received = amount - defense;
+
+	Life -= received;
+
+	if (IsPlayerInRoom())
+	{
+		cout << Name << " gets a hit for " << amount << " life points (" << defense << " blocked)" << endl;
+	}
+
+	if (!IsAlive())
+	{
+		Die();
+	}
+}
+
+void Creature::Die()
+{
+	AI->OnDie();
+}
+
 Room* Creature::CurrentRoom() const
 {
 	return (Room*)parent;
+}
+
+bool Creature::IsPlayerInRoom() const
+{
+	return parent->Find(PLAYER) != nullptr;
+}
+
+int Creature::GetDefense() const
+{
+	return armour ? armour->GetValue() : randomize(MinDefense, MaxDefense);
+}
+
+int Creature::GetAttackDamage() const
+{
+	return weapon ? weapon->GetValue() : randomize(MinHitpoints, MaxHitpoints);
 }
