@@ -186,21 +186,21 @@ bool Player::Move(const arglist& args)
 
 	if (exit == nullptr)
 	{
-		cout << "There's no exit in that direction (" << args[0] << ")." << endl;
+		cout << "There's no door in that direction (" << args[0] << ")." << endl;
 	}
 	else
 	{
 		if (exit->Locked)
 		{
-			cout << "This exit is locked!" << endl;
+			cout << "This door is locked!" << endl;
 		}
 		else if (exit->Closed)
 		{
-			cout << "This exit is closed!" << endl;
+			cout << "This door is closed!" << endl;
 		}
 		else
 		{
-			cout << "You go through the " << args[0] << " exit..." << endl;
+			cout << "You go through the " << args[0] << " door..." << endl;
 			Room* newRoom = exit->GetExitDestinationFrom(CurrentRoom());
 			ChangeParent(newRoom);
 			newRoom->Look();
@@ -218,20 +218,20 @@ void Player::Open(const arglist& args)
 
 		if (exit == nullptr)
 		{
-			cout << "There's no exit in that direction (" << args[1] << ")." << endl;
+			cout << "There's no door in that direction (" << args[1] << ")." << endl;
 		}
 		else if (exit->Locked)
 		{
-			cout << "That exit is locked with a key!" << endl;
+			cout << "That door is locked with a key!" << endl;
 		}
 		else if (!exit->Closed)
 		{
-			cout << "That exit is already opened!" << endl;
+			cout << "That door is already opened!" << endl;
 		}
 		else
 		{
 			exit->Closed = false;
-			cout << "You opened the " << exit->GetExitDirectionFrom(CurrentRoom()) << " exit!" << endl;
+			cout << "You opened the " << exit->GetExitDirectionFrom(CurrentRoom()) << " door!" << endl;
 		}
 	}
 	else
@@ -267,16 +267,16 @@ void Player::Close(const arglist& args)
 
 		if (exit == nullptr)
 		{
-			cout << "There's no exit in that direction (" << args[1] << ")." << endl;
+			cout << "There's no door in that direction (" << args[1] << ")." << endl;
 		}
 		else if (exit->Closed)
 		{
-			cout << "That exit is already closed!" << endl;
+			cout << "That door is already closed!" << endl;
 		}
 		else
 		{
 			exit->Closed = true;
-			cout << "You closed the " << exit->GetExitDirectionFrom(CurrentRoom()) << " exit!" << endl;
+			cout << "You closed the " << exit->GetExitDirectionFrom(CurrentRoom()) << " door!" << endl;
 		}
 	}
 	else
@@ -314,11 +314,11 @@ bool Player::UnLock(const arglist& args)
 
 		if (exit == nullptr)
 		{
-			cout << "There's no exit in that direction (" << args[1] << ")." << endl;
+			cout << "There's no door in that direction (" << args[1] << ")." << endl;
 		}
 		else if (!exit->Locked)
 		{
-			cout << "The exit is not locked!" << endl;
+			cout << "The door is not locked!" << endl;
 		}
 		else
 		{
@@ -356,11 +356,11 @@ bool Player::Lock(const arglist& args)
 
 		if (exit == nullptr)
 		{
-			cout << "There's no exit in that direction (" << args[1] << ")." << endl;
+			cout << "There's no door in that direction (" << args[1] << ")." << endl;
 		}
 		else if (exit->Locked)
 		{
-			cout << "The exit is locked!" << endl;
+			cout << "The door is locked!" << endl;
 		}
 		else
 		{
