@@ -70,6 +70,11 @@ bool World::AllPuzzlesSolved() const
 	return all(*puzzles_solved);
 }
 
+bool World::IsPlayerAlive() const
+{
+	return player->IsAlive();
+}
+
 void World::GameLoop()
 {
 	for (Entity* entity : entities)

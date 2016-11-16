@@ -58,6 +58,29 @@ int main()
 			break;
 		}
 
+		if (!world.IsPlayerAlive())
+		{
+			cout << "You died!!" << endl << "Do you want to play again? (y/n): ";
+			
+			string answ = "";
+			while (answ[0] != 'y' && answ[0] != 'n')
+			{
+				cin >> answ;
+			}
+
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cin.clear();
+
+			if (answ[0] == 'y')
+			{
+				world = World();
+				args.clear();
+				args.push_back("look");
+				continue;
+			}
+			break;
+		}
+
 		// Clean input
 		args.clear();
 		player_input = "";

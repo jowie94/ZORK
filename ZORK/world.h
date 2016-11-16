@@ -15,6 +15,7 @@ public:
 	bool Tick(arglist &args);
 
 	bool AllPuzzlesSolved() const;
+	bool IsPlayerAlive() const;
 	
 private: 
 	bool ParseCommand(arglist &args);
