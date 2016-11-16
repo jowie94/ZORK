@@ -92,7 +92,7 @@ bool Player::Pick(const arglist& args)
 			container = (Item*)Find(args[3], ITEM);
 		}
 
-		if (container == nullptr)
+		if (container == nullptr || container->ItemType != CONTAINER)
 		{
 			cout << "Couldn't find the container " << args[3] << endl;
 		}
@@ -157,7 +157,7 @@ bool Player::Drop(const arglist& args)
 			container = (Item*)Find(args[3], ITEM);
 		}
 
-		if (container == nullptr)
+		if (container == nullptr || container->ItemType != CONTAINER)
 		{
 			cout << "Couldn't find the container " << args[3] << endl;
 		}
