@@ -7,7 +7,7 @@ Item::Item(const char* name, const char* description, Entity* parent) : Entity(n
 {
 	Type = ITEM;
 	MinValue = MaxValue = 0;
-	ItemType = WEAPON;
+	ItemType = COMMON;
 	Closed = false;
 	Openable = false;
 }

@@ -19,6 +19,11 @@ void SimpleAI::Tick()
 	}
 }
 
+void SimpleAI::OnAttacked(Creature* from)
+{
+	creature->Target = from;
+}
+
 void SimpleAI::OnDie()
 {
 	cout << creature->Name << " died." << endl;

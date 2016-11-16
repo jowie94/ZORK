@@ -8,6 +8,7 @@ public:
 	virtual ~AI() {}
 
 	virtual void Tick() = 0;
+	virtual void OnAttacked(Creature* from) = 0;
 	virtual void OnDie() = 0;
 	
 	Creature* creature;

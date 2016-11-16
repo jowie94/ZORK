@@ -1,12 +1,11 @@
 #pragma once
 #include "ai.h"
-
-class SimpleAI :
+class ZombieAI :
 	public AI
 {
 public:
-	SimpleAI(Creature* creature);
-	~SimpleAI();
+	ZombieAI(Creature* creature);
+	~ZombieAI();
 
 	void Tick();
 	void OnAttacked(Creature* from);

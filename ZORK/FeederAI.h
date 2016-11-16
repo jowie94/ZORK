@@ -1,12 +1,11 @@
 #pragma once
 #include "ai.h"
-
-class SimpleAI :
+class FeederAI :
 	public AI
 {
 public:
-	SimpleAI(Creature* creature);
-	~SimpleAI();
+	FeederAI(Creature* creature);
+	~FeederAI();
 
 	void Tick();
 	void OnAttacked(Creature* from);

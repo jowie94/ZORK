@@ -21,7 +21,7 @@ public:
 	bool Equip(Item* item);
 	bool UnEquip(Item* item);
 	void AttackTarget();
-	void ReceiveAttack(int amount);
+	void ReceiveAttack(int amount, Creature* who);
 	void Die();
 	void Stats() const;
 

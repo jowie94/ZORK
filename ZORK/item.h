@@ -3,10 +3,12 @@
 
 enum ITEM_TYPE
 {
+	COMMON,
 	WEAPON,
 	ARMOUR,
 	HEALTH,
-	KEY
+	KEY,
+	CONTAINER
 };
 
 class Item :
