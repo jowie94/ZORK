@@ -181,7 +181,14 @@ World::World()
 
 
 World::~World()
-{}
+{
+	for (Entity* entity: entities)
+	{
+		delete entity;
+	}
+
+	delete puzzles_solved;
+}
 
 bool World::Tick(arglist &args)
 {
