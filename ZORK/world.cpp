@@ -65,7 +65,7 @@ World::World()
 
 	Creature* headcrab = new Creature("Headcrab", "A little monster with blades as limbs", management_room);
 	headcrab->AI = new GoalAI(headcrab, puzzles_solved->at(0), "After it died, the pod pilot became green!");
-	headcrab->MaxHitpoints = 2;
+	headcrab->MaxHitpoints = 5;
 	headcrab->MinHitpoints = 1;
 	headcrab->Life = 2;
 	headcrab->Target = player;
@@ -74,8 +74,8 @@ World::World()
 	zombie1->AI = new ZombieAI(zombie1);
 	zombie1->MaxDefense = 3;
 	zombie1->MinDefense = 1;
-	zombie1->MaxHitpoints = 3;
-	zombie1->MinHitpoints = 1;
+	zombie1->MaxHitpoints = 4;
+	zombie1->MinHitpoints = 2;
 	zombie1->Life = 4;
 	zombie1->Target = player;
 
@@ -83,15 +83,15 @@ World::World()
 	zombie2->AI = new ZombieAI(zombie2);
 	zombie2->MaxDefense = 3;
 	zombie2->MinDefense = 1;
-	zombie2->MaxHitpoints = 3;
-	zombie2->MinHitpoints = 1;
+	zombie2->MaxHitpoints = 4;
+	zombie2->MinHitpoints = 2;
 	zombie2->Life = 4;
 	zombie2->Target = player;
 
 	Creature* slasher2 = new Creature("Slasher", "Beware of	its blades or it will slash you in a second!", emergency_room);
 	slasher2->AI = new SimpleAI(slasher2);
 	slasher2->MaxDefense = 1;
-	slasher2->MaxHitpoints = 3;
+	slasher2->MaxHitpoints = 4;
 	slasher2->Life = 2;
 	slasher2->Target = player;
 
