@@ -129,11 +129,16 @@ void Creature::ReceiveAttack(int amount)
 	int defense = GetDefense();
 	int received = amount - defense;
 
+	if (received < 0)
+	{
+		received = 0;
+	}
+
 	Life -= received;
 
 	if (IsPlayerInRoom())
 	{
-		cout << Name << " gets a hit for " << amount << " life points (" << defense << " blocked)" << endl;
+		cout << Name << " gets a hit for " << received << " life points (" << defense << " blocked)" << endl;
 	}
 
 	if (!IsAlive())
@@ -144,7 +149,10 @@ void Creature::ReceiveAttack(int amount)
 
 void Creature::Die()
 {
-	AI->OnDie();
+	if (AI)
+	{
+		AI->OnDie();
+	}
 }
 
 void Creature::Stats() const
