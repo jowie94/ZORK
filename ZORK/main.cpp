@@ -41,6 +41,8 @@ int main()
 	cout << "Welcome to ZORK!" << endl;
 	cout << "----------------" << endl;
 
+	cout << "If you need help ask for it! :)" << endl << endl;
+
 	// Create world
 
 	args.push_back("look");

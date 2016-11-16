@@ -55,7 +55,7 @@ World::World()
 	feeder->MaxHitpoints = 3;
 	feeder->MinHitpoints = 1;
 	feeder->Life = 3;
-	
+
 	Creature* slasher1 = new Creature("Slasher", "Beware of	its blades or it will slash you in a second!", kitchen);
 	slasher1->AI = new SimpleAI(slasher1);
 	slasher1->MaxDefense = 1;
@@ -143,7 +143,7 @@ World::World()
 
 	// Exits
 	Exit* control_hall1 = new Exit("south", "north", "A white door", control_bridge, hall1);
-	
+
 	Exit* hall1_bedroom = new Exit("west", "east", "This door is broken", hall1, bedroom);
 	hall1_bedroom->Closed = false;
 
@@ -151,7 +151,7 @@ World::World()
 	hall1_dinning->Locked = true;
 
 	Exit* hall1_hall2 = new Exit("south", "north", "Noises come from this door", hall1, hall2, id_card);
-	
+
 	Exit* hall2_kitchen = new Exit("east", "west", "Smells like chicken", hall2, kitchen);
 
 	Exit* kitchen_dinning = new Exit("north", "south", "The unlock pannel seems to work", kitchen, dinning_room, id_card);
@@ -190,7 +190,7 @@ World::~World()
 	delete puzzles_solved;
 }
 
-bool World::Tick(arglist &args)
+bool World::Tick(arglist& args)
 {
 	bool result = true;
 
@@ -221,7 +221,7 @@ void World::GameLoop()
 	}
 }
 
-bool World::ParseCommand(arglist &args)
+bool World::ParseCommand(arglist& args)
 {
 	bool ret = true;
 
@@ -238,7 +238,7 @@ bool World::ParseCommand(arglist &args)
 	{
 		ret = player->Drop(args);
 	}
-	else if (str_equals(args[0], "north") || str_equals(args[0], "n") || str_equals(args[0], "south") || str_equals(args[0], "s") 
+	else if (str_equals(args[0], "north") || str_equals(args[0], "n") || str_equals(args[0], "south") || str_equals(args[0], "s")
 		|| str_equals(args[0], "east") || str_equals(args[0], "e") || str_equals(args[0], "west") || str_equals(args[0], "w"))
 	{
 		complete_direction(args[0]);
@@ -287,6 +287,10 @@ bool World::ParseCommand(arglist &args)
 	else if (str_equals(args[0], "loot"))
 	{
 		ret = player->Loot(args);
+	}
+	else if (str_equals(args[0], "help"))
+	{
+		help();
 	}
 	else
 	{

@@ -14,4 +14,6 @@ int randomize(int min, int max);
 
 bool all(std::vector<bool>& list);
 
+void help();
+
 #endif // _UTILS_H_
