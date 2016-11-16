@@ -43,7 +43,7 @@ void Player::Inventory() const
 
 	if (inventory.size() == 0)
 	{
-		cout << "You don't own anything :(" << endl;
+		cout << "You don't own anything :(" << endl << endl;
 	}
 	else
 	{
@@ -63,6 +63,8 @@ void Player::Inventory() const
 
 			cout << endl;
 		}
+
+		cout << endl;
 	}
 }
 
@@ -82,6 +84,7 @@ bool Player::Pick(const arglist& args)
 		{
 			cout << "Couldn't find item " << args[1] << endl;
 		}
+		cout << endl;
 	}
 	else if (args.size() == 4)
 	{
@@ -114,6 +117,7 @@ bool Player::Pick(const arglist& args)
 				cout << "Couldn't find item " << args[1] << " in container " << args[3] << endl;
 			}
 		}
+		cout << endl;
 	}
 	else
 	{
@@ -147,6 +151,7 @@ bool Player::Drop(const arglist& args)
 		{
 			cout << "Couldn't find item " << args[1] << "in your inventory." << endl;
 		}
+		cout << endl;
 	}
 	else if (args.size() == 4)
 	{
@@ -179,6 +184,7 @@ bool Player::Drop(const arglist& args)
 				cout << "Couldn't find item " << args[1] << " in your inventory." << endl;
 			}
 		}
+		cout << endl;
 	}
 	else
 	{
@@ -194,17 +200,17 @@ bool Player::Move(const arglist& args)
 
 	if (exit == nullptr)
 	{
-		cout << "There's no door in that direction (" << args[0] << ")." << endl;
+		cout << "There's no door in that direction (" << args[0] << ")." << endl << endl;
 	}
 	else
 	{
 		if (exit->Locked)
 		{
-			cout << "This door is locked!" << endl;
+			cout << "This door is locked!" << endl << endl;
 		}
 		else if (exit->Closed)
 		{
-			cout << "This door is closed!" << endl;
+			cout << "This door is closed!" << endl << endl;
 		}
 		else
 		{
@@ -265,6 +271,8 @@ void Player::Open(const arglist& args)
 			cout << "You opened " << args[1] << "!" << endl;
 		}
 	}
+
+	cout << endl;
 }
 
 void Player::Close(const arglist& args)
@@ -310,6 +318,8 @@ void Player::Close(const arglist& args)
 			cout << "You closed " << args[1] << "!" << endl;
 		}
 	}
+
+	cout << endl;
 }
 
 bool Player::UnLock(const arglist& args)
@@ -345,6 +355,8 @@ bool Player::UnLock(const arglist& args)
 				cout << "You can't unlock " << exit->GetExitDirectionFrom(CurrentRoom()) << " door with " << key->Name << "." << endl;
 			}
 		}
+
+		cout << endl;
 	}
 	else
 	{
@@ -387,6 +399,8 @@ bool Player::Lock(const arglist& args)
 				cout << "You can't lock " << exit->GetExitDirectionFrom(CurrentRoom()) << " door with " << key->Name << "." << endl;
 			}
 		}
+
+		cout << endl;
 	}
 	else
 	{
@@ -418,6 +432,8 @@ bool Player::Equip(const arglist& args)
 		{
 			cout << "You don't own " << args[1] << endl;
 		}
+
+		cout << endl;
 	}
 	else
 	{
@@ -456,6 +472,8 @@ bool Player::UnEquip(const arglist& args)
 		{
 			cout << "You unequipped " << object->Name << endl;
 		}
+
+		cout << endl;
 	}
 	else
 	{
@@ -517,7 +535,7 @@ bool Player::Examine(const arglist& args)
 
 		if (creature == nullptr)
 		{
-			cout << args[1] << " isn't here!" << endl;
+			cout << args[1] << " isn't here!" << endl << endl;
 		}
 		else
 		{
@@ -547,11 +565,11 @@ bool Player::Loot(const arglist& args)
 
 		if (creature == nullptr)
 		{
-			cout << args[1] << " isn't here!" << endl;
+			cout << args[1] << " isn't here!" << endl << endl;
 		}
 		else if (creature->Life > 0)
 		{
-			cout << "You can't loot when it's still alive!" << endl;
+			cout << "You can't loot when it's still alive!" << endl << endl;
 		}
 		{
 			list<Entity*> items;
@@ -572,6 +590,8 @@ bool Player::Loot(const arglist& args)
 				cout << "You loot " << creature->Name << " corpse but there wasn't anything..." << endl;
 			}
 		}
+
+		cout << endl;
 	}
 	else
 	{

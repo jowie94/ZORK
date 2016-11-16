@@ -24,5 +24,5 @@ void FeederAI::OnAttacked(Creature* from)
 
 void FeederAI::OnDie()
 {
-	cout << creature->Name << " died." << endl;
+	cout << creature->Name << " died." << endl << endl;
 }

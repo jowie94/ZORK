@@ -26,5 +26,5 @@ void SimpleAI::OnAttacked(Creature* from)
 
 void SimpleAI::OnDie()
 {
-	cout << creature->Name << " died." << endl;
+	cout << creature->Name << " died." << endl << endl;
 }

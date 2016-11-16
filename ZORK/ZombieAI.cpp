@@ -20,7 +20,7 @@ void ZombieAI::Tick()
 		}
 		else
 		{
-			cout << creature->Name << " missed!" << endl;
+			cout << creature->Name << " missed!" << endl << endl;
 		}
 	}
 }
@@ -32,5 +32,5 @@ void ZombieAI::OnAttacked(Creature* from)
 
 void ZombieAI::OnDie()
 {
-	cout << creature->Name << " died." << endl;
+	cout << creature->Name << " died." << endl << endl;
 }

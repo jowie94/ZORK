@@ -28,6 +28,7 @@ void Item::Look() const
 			{
 				cout << " - " << entity->Name << endl;
 			}
+			cout << endl;
 		}
 		else
 		{

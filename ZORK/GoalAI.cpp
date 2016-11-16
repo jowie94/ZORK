@@ -25,5 +25,5 @@ void GoalAI::OnAttacked(Creature* from)
 void GoalAI::OnDie()
 {
 	goal = true;
-	cout << creature->Name << " died." << endl << death_message << endl;
+	cout << creature->Name << " died." << endl << death_message << endl << endl;
 }

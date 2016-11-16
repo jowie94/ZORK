@@ -29,7 +29,7 @@ void Creature::Look() const
 	}
 	else
 	{
-		cout << Name << "'s corpse is here" << endl;
+		cout << Name << "'s corpse is here" << endl << endl;
 	}
 }
 
@@ -53,7 +53,7 @@ void Creature::Inventory() const
 
 	if (inventory.size() == 0)
 	{
-		cout << Name << " doesn't own anything :(" << endl;
+		cout << Name << " doesn't own anything :(" << endl << endl;
 	}
 	else
 	{
@@ -73,6 +73,7 @@ void Creature::Inventory() const
 
 			cout << endl;
 		}
+		cout << endl;
 	}
 }
 
@@ -138,7 +139,7 @@ void Creature::ReceiveAttack(int amount, Creature* who)
 
 	if (IsPlayerInRoom())
 	{
-		cout << Name << " gets a hit for " << received << " life points (" << defense << " blocked)" << endl;
+		cout << Name << " gets a hit for " << received << " life points (" << defense << " blocked)" << endl << endl;
 	}
 
 	if (AI) {
@@ -167,6 +168,7 @@ void Creature::Stats() const
 	cout << " - Damage: " << (weapon ? weapon->MinValue : MinHitpoints) << " ~ " << (weapon ? weapon->MaxValue : MaxHitpoints) << endl;
 	cout << " - Armour: " << (armour ? armour->Name : "no armour") << endl;
 	cout << " - Defense: " << (armour ? armour->MinValue : MinDefense) << " ~ " << (armour ? armour->MaxValue : MaxDefense) << endl;
+	cout << endl;
 }
 
 Room* Creature::CurrentRoom() const

@@ -49,7 +49,7 @@ int main()
 	{
 		if (!world.Tick(args))
 		{
-			cout << "Sorry, I didn't understand you" << endl;
+			cout << "Sorry, I didn't understand you" << endl << endl;
 		}
 
 		if (world.AllPuzzlesSolved())
