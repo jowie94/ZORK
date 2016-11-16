@@ -36,7 +36,7 @@ int main()
 	string player_input;
 	arglist args;
 
-	World world;
+	World* world = new World();
 
 	cout << "Welcome to ZORK!" << endl;
 	cout << "----------------" << endl;
@@ -47,18 +47,18 @@ int main()
 
 	while (true)
 	{
-		if (!world.Tick(args))
+		if (!world->Tick(args))
 		{
 			cout << "Sorry, I didn't understand you" << endl << endl;
 		}
 
-		if (world.AllPuzzlesSolved())
+		if (world->AllPuzzlesSolved())
 		{
 			cout << "You escaped!! Now you are alone, in the space, waiting for your saviours..." << endl;
 			break;
 		}
 
-		if (!world.IsPlayerAlive())
+		if (!world->IsPlayerAlive())
 		{
 			cout << "You died!!" << endl << "Do you want to play again? (y/n): ";
 			
@@ -73,7 +73,7 @@ int main()
 
 			if (answ[0] == 'y')
 			{
-				world = World();
+				world = new World();
 				args.clear();
 				args.push_back("look");
 				continue;
