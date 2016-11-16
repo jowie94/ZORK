@@ -12,7 +12,7 @@ World::World()
 	puzzles_solved = new vector<bool>(1, false);
 
 	Room* first_room = new Room("Central room", "The central room");
-	FinalRoom* second_room = new FinalRoom("A second room", "The east room", puzzles_solved);
+	FinalRoom* second_room = new FinalRoom("A second room", "The east room", "You're escaping", puzzles_solved);
 
 	entities.push_back(first_room);
 	entities.push_back(second_room);

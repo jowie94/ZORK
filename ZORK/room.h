@@ -10,7 +10,7 @@ public:
 	Room(const char *name, const char *description);
 	~Room();
 
-	void Look();
+	void Look() const;
 
 	Exit* GetExitAt(const string& direction);
 };
