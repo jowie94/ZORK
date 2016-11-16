@@ -25,7 +25,7 @@ void FinalRoom::Look() const
 
 	if (trues == goals->size() - 1)
 	{
-		cout << Name << endl << ready_description << endl;
+		cout << Name << endl << ready_description << endl << endl;
 	}
 	else
 	{

@@ -19,12 +19,19 @@ Item::~Item()
 
 void Item::Look() const
 {
-	if (SubEntities.size() > 0)
+	if (ItemType == CONTAINER && SubEntities.size() > 0)
 	{
-		cout << Name << " contains: " << endl;
-		for (Entity* entity : SubEntities)
+		if (!Closed)
 		{
-			cout << " - " << entity->Name << endl;
+			cout << Name << " contains: " << endl;
+			for (Entity* entity : SubEntities)
+			{
+				cout << " - " << entity->Name << endl;
+			}
+		}
+		else
+		{
+			cout << Name << "(closed)" << endl << Description << endl << endl;
 		}
 	}
 	else

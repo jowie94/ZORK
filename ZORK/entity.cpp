@@ -18,7 +18,7 @@ Entity::~Entity()
 
 void Entity::Look() const
 {
-	cout << Name << endl << Description << endl;
+	cout << Name << endl << Description << endl << endl;
 }
 
 void Entity::Tick()

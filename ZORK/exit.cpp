@@ -17,7 +17,7 @@ Exit::~Exit()
 
 void Exit::Look() const
 {
-	cout << Name << " to " << opposite_direction << endl << Description << endl;
+	cout << Name << " to " << opposite_direction << endl << Description << endl << endl;
 }
 
 const string& Exit::GetExitDirectionFrom(const Room* room) const

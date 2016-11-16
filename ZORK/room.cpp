@@ -1,5 +1,6 @@
 #include "room.h"
 #include <iostream>
+#include "creature.h"
 
 using namespace std;
 
@@ -16,12 +17,59 @@ void Room::Look() const
 {
 	cout << Name << endl << Description << endl;
 
-	// TODO: Separate elements
-	for (Entity* entity : SubEntities)
+	list<Entity*> entities;
+	FindAll(ITEM, entities);
+
+	if (entities.size() > 0)
 	{
-		if (entity->Type != PLAYER)
-			cout << entity->Name << endl;
+		cout << "Items here:" << endl;
+		for (Entity* entity : entities)
+		{
+			cout << " - " << entity->Name << endl;
+		}
 	}
+
+	entities.clear();
+	FindAll(CREATURE, entities);
+
+	if (entities.size() > 0)
+	{
+		cout << "You are not alone:" << endl;
+		for (Entity* entity : entities)
+		{
+			cout << " - " << entity->Name;
+			if (!((Creature*)entity)->IsAlive())
+			{
+				cout << " (dead)";
+			}
+
+			cout << endl;
+		}
+	}
+
+	entities.clear();
+	FindAll(EXIT, entities);
+
+	if (entities.size() > 0)
+	{
+		cout << "Exits here:" << endl;
+		for (Entity* entity : entities)
+		{
+			Exit* exit = (Exit*)entity;
+			cout << " - Direction " << exit->GetExitDirectionFrom(this) << " you go to " << exit->GetExitDestinationFrom(this)->Name;
+			if (exit->Locked)
+			{
+				cout << " (locked)";
+			}
+			else if (exit->Closed)
+			{
+				cout << " (closed)";
+			}
+			cout << endl;
+		}
+	}
+
+	cout << endl;
 }
 
 Exit* Room::GetExitAt(const string& direction)
